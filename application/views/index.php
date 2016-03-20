@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -39,8 +39,8 @@
                 </button>
                 <a class="navbar-brand" href="#">DevForge</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse" action="login">
-                <form class="navbar-form navbar-right" role="form">
+            <div id="navbar" class="navbar-collapse collapse">
+                <form method="post" class="navbar-form navbar-right" role="form" action="login">
                     <div class="form-group">
                         <input type="text" placeholder="Username" class="form-control">
                     </div>
@@ -53,6 +53,13 @@
             </div><!--/.navbar-collapse -->
         </div>
     </nav>
+
+    <?php if ($this->session->flashdata('error') != null) { ?>
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Error:</strong> Your username or password was incorrect.
+    </div>
+    <?php } ?>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">

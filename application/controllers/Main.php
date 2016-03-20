@@ -5,6 +5,7 @@ class Main extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library("Aauth");
+        $this->load->helper('url');
 	}
 
 	public function index()
@@ -17,7 +18,14 @@ class Main extends CI_Controller {
 	}
 
 	public function site_login() {
-		$username = $this->input->post('something');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        if ($this->aauth->login($username, $password)) {
+            redirect(site_url());
+        } else {
+            $this->session->set_flashdata('error', 'Incorrect username or password');
+            redirect(site_url());
+        }
 	}
 
 	public function signup() {
