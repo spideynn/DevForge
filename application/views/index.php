@@ -40,16 +40,32 @@
                 <a class="navbar-brand" href="#">DevForge</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <form method="post" class="navbar-form navbar-right" role="form" action="login">
-                    <div class="form-group">
-                        <input type="text" placeholder="Username" class="form-control">
+                <?php if (!$this->aauth->is_loggedin()) { ?>
+                    <form method="post" class="navbar-form navbar-right" role="form" action="login">
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button> &nbsp;
+                        <a href="signup" class="btn btn-sucess navbar-right btn btn-success" role="button">Sign Up</a>
+                    </form>
+                <?php } else { ?>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> <?php echo $this->session->userdata('username'); ?>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <?php if ($this->session->userdata('is_admin') === "true") { ?>
+                                <li><a href="#">Admin</a></li>
+                            <?php } ?>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Log out</a></li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button> &nbsp;
-                    <a href="signup" class="btn btn-sucess navbar-right btn btn-success" role="button">Sign Up</a>
-                </form>
+                <?php } ?>
             </div><!--/.navbar-collapse -->
         </div>
     </nav>
