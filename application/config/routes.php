@@ -54,6 +54,7 @@ $route[''] = 'main/index';
 $route['404_override'] = 'errors/error_404';
 $route['admin'] = 'main/admin';
 $route['login'] = 'main/site_login';
+$route['signup'] = 'main/signup';
 $route['admin/login'] = 'main/admin_login';
 $route['project/:id'] = 'main/project';
 $route['translate_uri_dashes'] = FALSE;

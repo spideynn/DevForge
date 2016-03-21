@@ -36,7 +36,7 @@ class Main extends CI_Controller {
 	}
 
 	public function signup() {
-		$something = $this->input->post('something');
+		$this->load->view('signup');
 	}
 
 	public function admin_login() {
@@ -47,5 +47,6 @@ class Main extends CI_Controller {
 		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('is_admin');
 		$this->session->unset_userdata('logged_in');
+		redirect(site_url());
 	}
 }

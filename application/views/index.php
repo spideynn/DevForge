@@ -73,7 +73,10 @@
     <?php if ($this->session->flashdata('error') != null) { ?>
     <div class="alert alert-danger">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong>Error:</strong> Your username or password was incorrect.
+        <strong>Error:</strong> Your username or password was incorrect. <br/>
+        <?php if(ENVIRONMENT !== "production") { ?>
+        <strong> Tracelog: <?php echo $this->aauth->print_errors(); ?> </strong>
+        <?php } ?>
     </div>
     <?php } ?>
 

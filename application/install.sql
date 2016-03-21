@@ -1,6 +1,7 @@
 /* DEVFORGE SQL INSTALL FILE */
 SET FOREIGN_KEY_CHECKS=0;
-
+CREATE DATABASE IF NOT EXISTS devforge;
+USE devforge;
 -- ----------------------------
 -- Table structure for `aauth_groups`
 -- ----------------------------
